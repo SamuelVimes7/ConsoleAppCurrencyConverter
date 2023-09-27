@@ -10,14 +10,14 @@ namespace Converter
     {
         static void Main(string[] args)
         {                      
-            Console.WriteLine("Ivskite valiutos koda");
+            Console.WriteLine("Iveskite valiutos pavadinima");
             string tp, ccy, dtFrom, dtTo;
             tp = "LT";
+            dtFrom = DateTime.Now.ToString("yyyy-MM-dd");
+            dtTo = DateTime.Now.ToString("yyyy-MM-dd");
             try
             {
-                ccy = Console.ReadLine();
-                dtFrom = DateTime.Now.ToString("yyyy-MM-dd");
-                dtTo = DateTime.Now.ToString("yyyy-MM-dd");
+                ccy = Console.ReadLine();                
                 FxRatesService.FxRatesSoapClient client = new FxRatesService.FxRatesSoapClient();
                 var result = client.getFxRatesForCurrency(tp, ccy, dtFrom, dtTo).InnerText;
                 Console.WriteLine(result.Remove(0, 19));
